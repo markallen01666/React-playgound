@@ -9,30 +9,65 @@
   <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
   <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+  <style>
+    .reverse-blue {
+      background-color: blue;
+      color: white;
+    }
+    .blue {
+      color: blue;
+    }
+    .red {
+      color: red;
+    }
+    .green {
+      color: green;
+    }
+    .hide {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
+  <div>
+    <h1>React Playgound</h1>
+  </div>
   <div id="hello"></div>
   <script type="text/babel">
     class Hello extends React.Component {
       constructor(){
         super();
         this.state = {
-          message: "my friend (from state)!"
+          message1: "my friend (from state)!",
+          message2: "A square is the product of a number multiplied by itself",
+          colour: "red",
+          h3colour: "blue",
+          buttonShow: "",
+          image: "http://blog.markallenwebdeveloper.co.uk/wp-content/uploads/2018/03/arcadia-mockup-1200x675.jpeg"
         };
         this.updateMessage = this.updateMessage.bind(this);
       }
       updateMessage() {
         this.setState({
-          message: "my friend (from changed state)!"
+          message1: "my friend (from changed state)!",
+          message2: "A triangle is a three sided polygon",
+          colour: "green",
+          h3colour: "reverse-blue",
+          buttonShow: "hide",
+          image: "http://markallenwebdeveloper.co.uk/blog/blog-images/css-flex.jpg"
         });
       }   
       render() {
         return (
           <div>
-            <h1>Hello {this.state.message}!</h1>
-            <button onClick={this.updateMessage}>Click me!</button>
-            <h2>A square is the product of a number multiplied by itself</h2>
+            <h2 className={this.state.colour}>Hello {this.state.message1}!</h2>
+            <button className={this.state.buttonShow} onClick={this.updateMessage}>Click me!</button>
+            <div className={this.state.h3colour}>
+              <h3>{this.state.message2}</h3>
+            </div>
+            <img src={this.state.image} />
           </div>  
         )
       }
